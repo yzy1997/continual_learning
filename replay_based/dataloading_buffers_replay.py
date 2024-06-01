@@ -17,3 +17,9 @@ benchmark = SplitMNIST(5, return_task_id=False)
 storage_p = ReservoirSamplingBuffer(max_size=30)
 
 print(f"Max buffer size: {storage_p.max_size}, current size: {len(storage_p.buffer)}")
+
+for i in range(5):
+    strategy_state = SimpleNamespace(experience=benchmark.train_stream[i])
+    storage_p.update(strategy_state)
+    print(f"Max buffer size: {storage_p.max_size}, current size: {len(storage_p.buffer)}")
+    print(f"class targets: {storage_p.buffer.targets.uniques}\n")
