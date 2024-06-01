@@ -4,6 +4,8 @@ from avalanche.benchmarks.utils.data_loader import GroupBalancedDataLoader
 from avalanche.training.storage_policy import ReservoirSamplingBuffer
 from types import SimpleNamespace
 
+from avalanche.training.storage_policy import ParametricBuffer, RandomExemplarsSelectionStrategy
+
 benchmark = SplitMNIST(n_experiences=5, return_task_id=True)
 
 dl = GroupBalancedDataLoader([exp.dataset for exp in benchmark.train_stream], batch_size=5)
